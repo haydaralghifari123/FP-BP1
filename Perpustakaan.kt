@@ -21,17 +21,20 @@ open class Perpustakaan(val nama: String, val alamat: String) {
     }
 
     fun loginStaff() {
-        println("----- Login Staff -----")
+    println("----- Login Staff -----")
+    var staff: Staff?
+    do {
         print("Masukkan Nama Staff: ")
         val nama = readLine()!!.toString()
-        val staff = staffList.find { it.nama == nama }
+        staff = staffList.find { it.nama == nama }
         if (staff != null) {
             loggedInStaff = staff
             println("Staff '${staff.nama}' berhasil login.")
         } else {
-            println("Staff dengan nama '$nama' tidak ditemukan.")
+            println("Staff dengan nama '$nama' tidak ditemukan. Silakan coba lagi.")
         }
-    }
+    } while (staff == null)
+}
 
     fun logoutStaff() {
         loggedInStaff = null
